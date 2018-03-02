@@ -1,7 +1,6 @@
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 
-UserID = open('userId.txt', 'r')
  
 def read_linenumber(file,x):
 	for index, line in enumerate(iter(file)):
@@ -16,7 +15,7 @@ IliasPassword = raw_input()
 
 print "Logging in to Ilias"
 
-options = webdriver.ChromeOptions()
+options = webdriver.Chrome("/usr/local/chromedriver").ChromeOptions()
 options.add_argument('headless')
 Driver = webdriver.Chrome(chrome_options=options)
 
@@ -27,7 +26,7 @@ def login(Driver):
 	SelectUni.send_keys('bern')
 	SelectUni.send_keys(Keys.RETURN)
 
-	Driver.get_screenshot_as_file("/home/fabio/Documents/P1/iliasLogin3.1.png")
+	Driver.get_screenshot_as_file("$HOME/iliasLogin3.1.png")
 
 	LoginUni = Driver.find_element_by_xpath("/html/body[@class='std']/div[@id='ilAll']/div[@id='mainspacekeeper']/div[@class='row']/div[@id='fixed_content']/div[@id='mainscrolldiv']/div[@class='ilStartupSection']/div[@id='wayf_div']/form[@id='IdPList']/input[@id='wayf_submit_button']")
 	LoginUni.click()
